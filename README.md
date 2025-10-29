@@ -6,4 +6,4 @@ Helsingin yliopiston Algoritmit ja tekoäly -harjoitustyökurssin projekti.
 
 ## Dokumentaatio
 
-### [Määrittelydokumentti](https://github.com/Lepardi/Tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)
+### [Määrittelydokumentti](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/maarittelydokumentti.md)
