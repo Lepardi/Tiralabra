@@ -1,10 +1,12 @@
 from ui import UI
 from game import Game
+from ai import AI
 
 
 def main():
     game = Game()
-    ui = UI(game)
+    ai = AI(game)
+    ui = UI(game, ai)
     ui.printUILoop()
 
 
