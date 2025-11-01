@@ -29,6 +29,9 @@ class AI:
 
         Args:
             depth: The depth of the search tree for the algorithm
+
+        Returns:
+            The direction into which move the board
         """
         moves = ["up","down","left","right"]
         bestMove = None
@@ -58,7 +61,8 @@ class AI:
             playerTurn: True or False value. True when the recursion node is to make a move made on board
                         False when recursion node is to add a random number on board
 
-        Returns: The heuristic value of the board after the depth number of moves
+        Returns: 
+            The heuristic value of the board after the depth number of moves
         """
         #self.printBoardState(board)
         #if self.game.isGameWon(board):
@@ -113,6 +117,9 @@ class AI:
 
         Args: 
             board: The board whiches value is to be estimated
+
+        Returns:
+            The heuristic value of the given board
         """
 
         estimate = 0

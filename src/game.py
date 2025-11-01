@@ -39,7 +39,8 @@ class Game:
             board: The board from which the highest 
                    number is to be get  
         
-        Returns: The highest number of a board
+        Returns: 
+            The highest number of a board
         """
 
         highest = 0
@@ -96,7 +97,8 @@ class Game:
         Args: 
             board: The board which is to be checked
 
-        Returns: True if the board is full, False if the board is not full
+        Returns: 
+            True if the board is full, False if the board is not full
         """
         for i in range(4):
             if 0 in board[i]:
@@ -172,7 +174,8 @@ class Game:
             move: The move which is to be checked
             board: The board on which the move is to be checked
 
-        Returns: True if the move changes the board, False if the move does not
+        Returns: 
+            True if the move changes the board, False if the move does not
         """
         prevBoard = copy.deepcopy(board)
         if move == "up":
@@ -207,6 +210,9 @@ class Game:
 
         Args:
             board: The board to be moved
+
+        Returns:
+            A new move board where the numbers have been moved upward
         """
         returnBoard = copy.deepcopy(board)
         for i in range(len(returnBoard)):
@@ -239,6 +245,9 @@ class Game:
 
         Args:
             board: The board to be moved
+
+        Returns:
+            A new move board where the numbers have been moved downward
         """
         returnBoard = copy.deepcopy(board)
         for i in range(len(returnBoard)):
@@ -270,6 +279,9 @@ class Game:
 
         Args:
             board: The board to be moved
+
+        Returns:
+            A new move board where the numbers have been moved leftward            
         """
         returnBoard = copy.deepcopy(board)
         for i in range(len(returnBoard)):
@@ -299,6 +311,9 @@ class Game:
 
         Args:
             board: The board to be moved
+
+        Returns:
+            A new move board where the numbers have been moved rightward
         """
         returnBoard = copy.deepcopy(board)
         for i in range(len(returnBoard)):

@@ -1,14 +1,14 @@
 # Viikkoraportti 1
 
-Viikolla projektiin käyetyt tunnit: ~40t
+Viikolla projektiin käytetyt tunnit: ~40t
 
 1. Mitä tehty tällä viikolla: \
-Olin aloittanut projektin valmistelun jo ennen kurssin alkua ja olin tutustunut expectiminimax algoritmiin ja pelin 2048 toteuttammiseen etukäteen, joten pääsin tehokkaasti liikkeelle. \
+Olin aloittanut projektin valmistelun jo ennen kurssin alkua ja olin tutustunut expectiminimax algoritmiin ja pelin toteuttamiseen etukäteen, joten pääsin tehokkaasti liikkeelle. \
 Projektiin valmistui peliin vaadittavat funktiot ja käyttöliittymä joten peli on pelikelponen. Peliä pelaava tekoäly ja sen käyttämä expectiminimax algoritmi ovat myös valmistuneet ja pelin pelaaminen onnistuu niiltä. 
 
 2. Projektin edistyminen: \
-Projekti on periaattessa tällä hetkellä valmis pelin ja sitä pelaavan tekoälyn olemassa olon näkökulmasta. Mitään testejä ei ole tehty vielä joten käytännössä projekti vielä hyvin kesken. \
-Tekoäly ei myöskään tällä hetkellä ole kovin hyvä eli se voittaa pelin vain harvoin ja on hyvin hidas. Tekoälyn ja pelin funktiota voisi tehostaa ohjelman nopeuttamiseksi.
+Projektista on valmiina pelin ja sitä pelaavan tekoälyn toiminnot sekä käyttöliittymä. Mitään testejä ei ole vielä tehty ja dokumentaatiot puuttuvat. \
+Tekoäly ei myöskään tällä hetkellä ole kovin hyvä ja se voittaa pelin vain harvoin ja on hyvin hidas. Tekoälyn ja pelin funktiota voisi tehostaa ohjelman nopeuttamiseksi.
 
 3. Mitä opin tällä viikolla: \
 Expectiminimax on oikeastaan aika raskas algoritmi tähän tapaukseen koska satunnaisia tapahtumia on potentiaalisesti monta ja niiden määrä kasvattaa hakupuuta näiden määrä kertoimella. Suurin osa satunnaisista tapahtumista on kuitenkin merkityksettömiä pelin pelaamisen kannalta joten mielestäni niiden kaikkien läpikäynti ei ole järkevää.
