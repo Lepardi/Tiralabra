@@ -1,4 +1,3 @@
-import random
 import copy
 
 class Game:
@@ -8,9 +7,10 @@ class Game:
         board: The game board
     """
 
-    def __init__(self):
+    def __init__(self, randomizer):
         """Constructor for a 2048 game object
         """
+        self.random = randomizer
         self.board =  [[0,0,0,0],
                        [0,0,0,0],
                        [0,0,0,0],
@@ -127,16 +127,16 @@ class Game:
         """Add a 2 or 4 into a random position on the game objects board. 
         2 is added with a propability of 9/10 and 4 with 1/10 propability
         """
-        if random.randint(1, 10) < 2:
+
+        if self.random.randint(1, 10) < 2:
             num = 4
         else:
             num = 2 
         while True:
-            coordinates = (random.randint(0,3),random.randint(0,3))
+            coordinates = (self.random.randint(0,3),self.random.randint(0,3))
             if self.board[coordinates[0]][coordinates[1]] == 0:
                 self.board[coordinates[0]][coordinates[1]] = num
                 break
-
 
     def moveBoard(self, move):
         """Move the game objects board in some direction and change the 

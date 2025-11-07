@@ -6,8 +6,12 @@ authors = ["Kim Malmsten"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+coverage = "^7.11.0"
 
 [build-system]
 requires = ["poetry-core"]
