@@ -65,10 +65,10 @@ class AI:
             The heuristic value of the board after the depth number of moves
         """
         #self.printBoardState(board)
-        #if self.game.isGameWon(board):
-        #    return 99999999999999999
+        if self.game.isGameWon(board):
+            return 99999999999999999
         if self.game.isBoardFull(board):
-            return -9999999999999999
+            return -999999999999999999
         elif depth == 0:
             return self.heuristic(board)
 

@@ -13,7 +13,7 @@ Projekti on edelleen ihan hyvällä mallilla sisällön ja ytimen osalta. Testie
 Tällä viikolla ei tullut vastaan paljoa uutta mutta muutama uusi testaustekniikka jäi käteen.
 
 4. Mitä jäi epäselväksi: \
-Tällä viikolla ei herännyt juuri mitään uusia kysymyksiä joihin ei olisi materiaalista löytynyt vastauksia.
+Aikataulu ohjeissa mainintaan vaatimuksena että "Projektin testikattavuus seurattavissa.", ja huomasin että esimerkki projekteissa on githubin codecov badge käytössä kattavuuden seuraamiseen, mutta kurssin omissa materiaaleissa ei ole badgen käytöstä mitään mainintaa. Mietin vain että riittääkö testikattavuuden seurantaan se että .coverage tiedoston sisältö ilmenee testausraportissa? 
 
 5. Mitä seuraavaksi: \
-Testien, ja eritysesti vakuuttavien tekoälyä testaavien testien, tekeminen jatkuu. Pelin ja tekoälyn ohjelmakoodia pitäisi myös vielä yrittää tehostaa. 
+Testien kehittäminen jatkuu. Pelin ja tekoälyn ohjelmakoodia pitäisi myös vielä yrittää tehostaa. 
