@@ -5,3 +5,6 @@
 
 # Testit
 
+Game luokan testit testaavat pelin funktioiden toimintaa yksikkötesteillä. \
+
+[Tämä dokumentti on vielä kesken ja täydentyy]
