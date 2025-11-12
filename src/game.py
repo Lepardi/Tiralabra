@@ -66,6 +66,25 @@ class Game:
                     positions.append((i,j))
         return positions
 
+    def getFirstZeroPosition(self, board):
+        """Get the first free space from the board by looking row by row 
+        from left to right. This gets the possibly worst case empty position 
+        for a random number to appear in space of the highest number 
+        in the left upper corner after player is forced to move this number
+
+        Args:
+            board: The board to get the free space from
+
+        Returns:
+            The position of the first space with a zero as a tuple. 
+            Return tuple of None:s if no free spaces
+        """
+        for i in range(4):
+            for j in range(4):
+                if board[i][j] == 0:
+                    return (i, j)
+        return (None, None)
+    
     def setBoard(self, board):
         """Set the game objects board
         

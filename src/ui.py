@@ -16,6 +16,7 @@ class UI:
     def printUILoop(self):
         """Function for the UI loop
         """
+        print()
         print("2048 peli")
 
         while True:
@@ -31,7 +32,7 @@ class UI:
                 print()
                 self.printAIGameLoop()
             if command == "q":
-                print("Hyvästi.")
+                print("Hyvästi." + "\n")
                 break
 
     def printGameLoop(self):
@@ -72,25 +73,59 @@ class UI:
                 self.printBoardState()
                 print()
                 break
+    
 
     def printAIGameLoop(self):
-        """Function for the AI loop in which the AI plays the game
+        """Function for printing the UI loop from which is used to call the AI loop and
+          to issue parameters for the AI to play the game.
+          Will also print the highest value from the gameboard after each play of the game
         """
         while True:
             print("Syötä hakupuun syvyys (Syötä q palataksesi ohjelmavalikkoon)")
             depth = input("Syvyys: ")
             if depth == "q":
                 break
+            try:
+                depth = int(depth)
+                if depth < 0:
+                    print("Syvyyden pitää olla positiivinen luku." + "\n")
+                    continue
+            except ValueError:
+                print("Syvyyden pitää olla positiivinen luku." + "\n")
+                continue
             print()
             print("Syötä kuinka monta kertaa tekoäly pelaa (Syötä q palataksesi ohjelmavalikkoon)")
             numberOfGames = input("Määrä: ")
             if numberOfGames == "q":
                 break
+            try:
+                numberOfGames = int(numberOfGames)
+                if numberOfGames < 1:
+                    print("Pelien määrän pitää olla positiivinen luku." + "\n")
+                    continue
+            except ValueError:
+                print("Pelien määrän pitää olla positiivinen luku." + "\n")
+                continue
+            print()
+            print("Syötä kuinka monen liikkeen välein pelilauta näytetään (Syötä q palataksesi ohjelmavalikkoon)")
+            numberOfMoves = input("Määrä: ")
+            if numberOfMoves == "q":
+                break
+            try:
+                numberOfMoves = int(numberOfMoves)
+                if numberOfMoves < 1:
+                    print("Liikeiden määrän pitää olla positiivinen luku." + "\n")
+                    continue
+            except ValueError:
+                print("Liikeiden määrän pitää olla positiivinen luku." + "\n")
+                continue
             print()
 
             results = []
             for i in range(int(numberOfGames)):
                 self.game.startGame()
+                results.append(self.ai.aiLoop(depth, numberOfMoves))
+                """
                 movesCounter = 0
                 while True:
                     movesCounter += 1
@@ -115,6 +150,7 @@ class UI:
                         print()
                         results.append(self.game.getHighestNum(board))
                         break
+                """
             print()
             print(results)
             print()

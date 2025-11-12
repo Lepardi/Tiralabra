@@ -86,6 +86,22 @@ class TestGame(unittest.TestCase):
         test_zero_positions = [(0,0),(3,2),(3,3)]
         self.assertEqual(test_zero_positions, zero_positions)
 
+    def test_getFirstZeroPosition_gets_first_zero_position(self):
+        test_board =  [[2,2,2,2],
+                        [2,2,2,2],
+                        [2,2,2,2],
+                        [2,2,0,0]]
+        zero_position = self.game.getFirstZeroPosition(test_board)
+        self.assertEqual((3,2), zero_position)
+
+    def test_getFirstZeroPosition_returns_correctly_for_full_board(self):
+        test_board =  [[2,2,2,2],
+                        [2,2,2,2],
+                        [2,2,2,2],
+                        [2,2,2,2]]
+        zero_position = self.game.getFirstZeroPosition(test_board)
+        self.assertEqual((None, None), zero_position)
+
     def test_setBoard_sets_the_board(self):
         board_to_set =  [[0,2,2,2],
                         [2,2,2,2],
