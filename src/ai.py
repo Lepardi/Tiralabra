@@ -13,15 +13,15 @@ class AI:
             game: The game object which is used for playing 
         """
         self.game = game
-        #self.evaluationMatrix = [[4**15, 4**14, 4**13, 4**12],
-        #                        [4**8, 4**9, 4**10, 4**11],
-        #                        [4**7, 4**6,4**5,4**4],
-        #                        [4**0, 4**1, 4**2, 4**3]]
+        self.evaluationMatrix = [[4**15, 4**14, 4**13, 4**12],
+                                [4**8, 4**9, 4**10, 4**11],
+                                [4**7, 4**6,4**5,4**4],
+                                [4**0, 4**1, 4**2, 4**3]]
 
-        self.evaluationMatrix = [[2**15, 2**14, 2**13, 2**12],
-                                [2**8, 2**9, 2**10, 2**11],
-                                [2**7, 2**6,2**5,2**4],
-                                [2**0, 2**1, 2**2, 2**3]]
+        #self.evaluationMatrix = [[2**15, 2**14, 2**13, 2**12],
+        #                        [2**8, 2**9, 2**10, 2**11],
+        #                        [2**7, 2**6,2**5,2**4],
+        #                        [2**0, 2**1, 2**2, 2**3]]
 
     def printBoardState(self):
         """Print the gameboard
@@ -31,29 +31,29 @@ class AI:
             print(board[i])
         print()
 
-    def aiLoop(self, depth, numberOfMoves):
+    def aiLoop(self, depth, numberOfMoves, mode = None):
         movesCounter = 0
         while True:
-            movesCounter += 1
-            move = self.getNextMove(int(depth))
 
             if movesCounter % int(numberOfMoves) == 0:
                 print("Siirtoja " + str(movesCounter) + ":")
                 self.printBoardState()
+            movesCounter += 1
 
+            move = self.getNextMove(int(depth), (mode))
             self.game.moveBoard(move)
             board = self.game.getBoard()
-            if self.game.isGameWon(board):
-                print("Voitit pelin " + str(movesCounter) + " siirron jälkeen:")
-                self.printBoardState()
-                return (self.game.getHighestNum(board))
+            #if self.game.isGameWon(board):
+            #    print("Voitit pelin " + str(movesCounter) + " siirron jälkeen:")
+            #    self.printBoardState()
+            #    return (self.game.getHighestNum(board))
                 
             if self.game.isBoardFull(board):
                 print("Häviö " + str(movesCounter) + " siirron jälkeen:")
                 self.printBoardState()
                 return (self.game.getHighestNum(board))
 
-    def getNextMove(self, depth):
+    def getNextMove(self, depth, mode = None):
         """Function for determining the next best move to make. 
            Calls the expectiminimax algorithm function to value the moves
 
@@ -78,22 +78,22 @@ class AI:
 
                 if move == "up":
                     movedBoard = copy.deepcopy(self.game.moveBoardUp(prevBoard))
-                    moveScore = self.expectiminimax(movedBoard, depth, False)
+                    moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
                 if move == "down":
                     movedBoard = copy.deepcopy(self.game.moveBoardDown(prevBoard))
-                    moveScore = self.expectiminimax(movedBoard, depth, False)
+                    moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
                 if move == "left":
                     movedBoard = copy.deepcopy(self.game.moveBoardLeft(prevBoard))
-                    moveScore = self.expectiminimax(movedBoard, depth, False)
+                    moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
                 if move == "right":
                     movedBoard = copy.deepcopy(self.game.moveBoardRight(prevBoard))
-                    moveScore = self.expectiminimax(movedBoard, depth, False)
+                    moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
                 if moveScore > bestMoveScore:
@@ -102,7 +102,7 @@ class AI:
 
         return bestMove
 
-    def expectiminimax(self, board, depth, playerTurn):
+    def expectiminimax(self, board, depth, playerTurn, mode = None):
         """The function for the expectiminimax
 
         Args:
@@ -115,50 +115,58 @@ class AI:
             The heuristic value of the board after the depth number of moves
         """
         #self.printBoardState(board)
-        if self.game.isGameWon(board):
-            return 99999999999999999
-        if self.game.isBoardFull(board):
-            return -99999999999999999
-        elif depth == 0:
+        #if self.game.isGameWon(board):
+        #    return 99999999999999999
+        #if self.game.isBoardFull(board):
+        #    return -99999999999999999
+        if depth == 0:
             return self.heuristic(board)
 
         alpha = 0
         if playerTurn:
+            isFull = True
             moves = ["up","down","left","right"]
             for move in moves:
                 if self.game.isMovePossible(move, board):
-
+                    isFull = False
                     if move == "up":
-                        tmpBoard = copy.deepcopy(self.game.moveBoardUp(board))
-                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False)
+                        tmpBoard = (self.game.moveBoardUp(board))
+                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)
 
                     if move == "down":
-                        tmpBoard = copy.deepcopy(self.game.moveBoardDown(board))
-                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False)
+                        tmpBoard = (self.game.moveBoardDown(board))
+                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)
 
                     if move == "left":
-                        tmpBoard = copy.deepcopy(self.game.moveBoardLeft(board))
-                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False)    
+                        tmpBoard = (self.game.moveBoardLeft(board))
+                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)    
 
                     if move == "right":
-                        tmpBoard = copy.deepcopy(self.game.moveBoardRight(board))
-                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False)    
+                        tmpBoard = (self.game.moveBoardRight(board))
+                        tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)    
 
                     if tmpAlpha > alpha:
                         alpha = tmpAlpha
-     
+            if isFull:
+                return -99999999999999999
+        #Muokkaaa lautaa suoraan,älä kutsu setnumtoboard!
         else:
-            #freeSpaces = self.game.getZeroPositions(board)
-            freeSpace = self.game.getFirstZeroPosition(board)
-            #board = self.game.setNumToBoard(2, freeSpaces[random.randint(0, len(freeSpaces)-1)], board)
-            board = self.game.setNumToBoard(2, (freeSpace), board)
-            
-            alpha += self.expectiminimax(board, depth, True)
-            
-            #for position in freeSpaces:
-            #    board = self.game.setNumToBoard(2, position, board)
-            #    alpha += self.expectiminimax(board, depth, True)/len(freeSpaces)
-            #alpha = alpha
+            if mode == 1:
+                freeSpaces = self.game.getZeroPositions(board)
+                for position in freeSpaces:
+                    #board = self.game.setNumToBoard(2, position, board)
+                    board[position[0]][position[1]] = 2
+                    alpha += (self.expectiminimax(board, depth, True, mode))*0.9
+                    #board = self.game.setNumToBoard(4, position, board)
+                    board[position[0]][position[1]] = 4
+                    alpha += (self.expectiminimax(board, depth, True, mode))*0.1
+            else:
+                freeSpace = self.game.getFirstZeroPosition(board)
+                #board = self.game.setNumToBoard(2, (freeSpace), board)
+                board[freeSpace[0]][freeSpace[1]] = 2
+                alpha += self.expectiminimax(board, depth, True, mode)*0.9
+                #board = self.game.setNumToBoard(4, (freeSpace), board)
+                #alpha += self.expectiminimax(board, depth, True, mode)*0.1
 
         return alpha
         
@@ -176,19 +184,19 @@ class AI:
         """
 
         estimate = 0
-        freeSpaces = len(self.game.getZeroPositions(board))
+        #freeSpaces = len(self.game.getZeroPositions(board))
         for i in range(4):
             for j in range(4):
-                estimate += (board[i][j]*self.evaluationMatrix[i][j])*freeSpaces
+                estimate += (board[i][j]*self.evaluationMatrix[i][j])#freeSpaces
 
-        highest = self.game.getHighestNum(board)
+        #highest = self.game.getHighestNum(board)
         
         #if board[0][0] == highest:
         #    estimate = estimate*2
 
-        if ((board[0][0] == highest) and (board[0][1] == highest/2) 
-            and (board[0][2] < (highest/2)/2) and (board[0][3] < ((highest/2)/2)/2)):
-            #and board[1][3] == board[0][3]):
-            estimate = estimate*10
+        #if ((board[0][0] == highest) and (board[0][1] == highest/2) 
+        #    and (board[0][2] < (highest/2)/2) and (board[0][3] < ((highest/2)/2)/2)):
+        #    #and board[1][3] == board[0][3]):
+        #    estimate = estimate*10
 
         return estimate

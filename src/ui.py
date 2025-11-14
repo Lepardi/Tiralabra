@@ -120,11 +120,24 @@ class UI:
                 print("Liikeiden määrän pitää olla positiivinen luku." + "\n")
                 continue
             print()
+            print("Syötä missä moodissa äly pelaa (Syötä q palataksesi ohjelmavalikkoon)")
+            mode = input("Moodi: ")
+            if mode == "q":
+                break
+            try:
+                mode = int(mode)
+                if mode < 0:
+                    print("Moodin pitää olla positiivinen luku." + "\n")
+                    continue
+            except ValueError:
+                print("Moodin pitää olla positiivinen luku." + "\n")
+                continue
+            print()
 
             results = []
             for i in range(int(numberOfGames)):
                 self.game.startGame()
-                results.append(self.ai.aiLoop(depth, numberOfMoves))
+                results.append(self.ai.aiLoop(depth, numberOfMoves, int(mode)))
                 """
                 movesCounter = 0
                 while True:
