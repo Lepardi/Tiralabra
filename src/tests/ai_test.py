@@ -62,11 +62,19 @@ class TestAi(unittest.TestCase):
                       [8,2,8,2],
                       [2,4,2,4]]
         
+        self.assertEqual(-99999999999999999, self.ai.expectiminimax(test_board, 2, True, mode=1))
+
+    def test_expectiminimax_returns_correct_value_for_full_board_in_mode_zero(self):
+        test_board =  [[2,4,2,4],
+                      [4,1024,4,8],
+                      [8,2,8,2],
+                      [2,4,2,4]]
+        
         self.assertEqual(-99999999999999999, self.ai.expectiminimax(test_board, 2, True, mode=0))
 
     def test_getNextMove_returns_up_when_that_is_next_best_move(self):
         test_board =  [[1024,0,2,4],
-                      [4,1024,4,8],
+                      [1024,0,4,8],
                       [8,2,8,2],
                       [2,4,2,4]]
         self.game.setBoard(test_board)
@@ -86,4 +94,5 @@ class TestAi(unittest.TestCase):
                         [4,2,8,32],
                         [2,4,2,4]]
         self.game.setBoard(test_board)
-        self.assertEqual(1024, self.ai.aiLoop(1, 500, mode=1))  
+        highest_num = self.ai.aiLoop(1, 500, mode=1)
+        self.assertEqual(1024, highest_num)  

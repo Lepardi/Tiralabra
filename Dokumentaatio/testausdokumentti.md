@@ -1,6 +1,21 @@
 # Testausdokumentti
 
-[Tämä dokumentti on kesken ja täydentyy]
+## Testien ajaminen
+
+Testit voidaan ajaa projektin juurihakemistosta komennolla:
+```
+poetry run pytest src
+```
+
+Testikattavuusraportti saadaan tuotettua ajamalla projektin juurihakemistosta komento:
+```
+poetry run coverage run --branch -m pytest src
+```
+
+Testikattavuusraporttia voidaan tarkastella komenolla:
+```
+poetry run coverage report -m
+```
 
 ## Testauksen kattavuusraportti
 ![Coverage](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Images/coverage.PNG)

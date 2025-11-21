@@ -164,7 +164,7 @@ class AI:
                 freeSpace = self.game.getFirstZeroPosition(board)
                 #board = self.game.setNumToBoard(2, (freeSpace), board)
                 board[freeSpace[0]][freeSpace[1]] = 2
-                alpha += self.expectiminimax(board, depth, True, mode)*0.9
+                alpha += self.expectiminimax(board, depth, True, mode)
                 #board = self.game.setNumToBoard(4, (freeSpace), board)
                 #alpha += self.expectiminimax(board, depth, True, mode)*0.1
 
