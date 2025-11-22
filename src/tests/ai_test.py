@@ -94,5 +94,21 @@ class TestAi(unittest.TestCase):
                         [4,2,8,32],
                         [2,4,2,4]]
         self.game.setBoard(test_board)
-        highest_num = self.ai.aiLoop(1, 500, mode=1)
-        self.assertEqual(1024, highest_num)  
+        #highest_num = self.ai.aiLoop(1, 500, mode=1)
+        self.assertEqual(1024, self.ai.aiLoop(1, 500, mode=1))  
+
+    def test_aiLoop_plays_the_game_as_expected(self):
+        test_board =  [[1024,512,256,256],
+                        [2,8,16,2],
+                        [4,2,8,32],
+                        [2,4,2,4]]
+        self.game.setBoard(test_board)
+        self.assertEqual(2048, self.ai.aiLoop(1, 500, mode=1))  
+
+    def test_aiLoop_plays_the_game_as_expected_in_mode_zero(self):
+        test_board =  [[1024,512,256,256],
+                        [2,8,16,2],
+                        [4,2,8,32],
+                        [2,4,2,4]]
+        self.game.setBoard(test_board)
+        self.assertGreater(1024, self.ai.aiLoop(1, 500, mode=0))  

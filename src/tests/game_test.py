@@ -37,6 +37,11 @@ class TestGame(unittest.TestCase):
         self.game_not_random2.addNumToBoard()
         self.assertEqual(2, self.game_not_random2.getBoard()[3][3])
 
+    def test_addNumToBoard_adds_num_to_random_place(self):
+        prev_board = copy.deepcopy(self.game.getBoard())
+        self.game.addNumToBoard()
+        self.assertNotEqual(prev_board, self.game.getBoard())
+
     def test_starGame_initiates_game_correctly(self):
         test_board =  [[0,0,0,4],
                        [0,512,0,0],
@@ -59,14 +64,6 @@ class TestGame(unittest.TestCase):
                         [0,0,0,0],
                         [0,0,0,0],
                         [0,0,0,0]]
-        self.assertEqual(board, test_board)
-
-    def test_getBoard_after_setup(self):
-        board = self.game.getBoard()
-        test_board =  [[0,0,0,0],
-                       [0,0,0,0],
-                       [0,0,0,0],
-                       [0,0,0,0]]
         self.assertEqual(board, test_board)
     
     def test_getHighestNum_gets_highest_num(self):
@@ -158,11 +155,6 @@ class TestGame(unittest.TestCase):
                      [2,2,2,2]]
         
         self.assertEqual(False, self.game.isGameWon(test_board))
-
-    def test_addNumToBoard_adds_num_to_random_place(self):
-        prev_board = copy.deepcopy(self.game.getBoard())
-        self.game.addNumToBoard()
-        self.assertNotEqual(prev_board, self.game.getBoard())
 
     def test_moveBoardUp_moves_board_up_correctly(self):
         board_to_move =  [[2,0,0,4],
