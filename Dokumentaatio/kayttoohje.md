@@ -22,30 +22,29 @@ python src/main.py
 ## Ohjelman käyttö
 
 Ohjelma kysyy aluksi haluaako käyttäjä pelata peliä itse vai antaa tekoälyn pelata. 
-\
+
 1. Syöttämälle luvun 1 pääsee käyttäjä pelaamaan peliä itse. 
-\
+
 2. Syöttämällä luvun 2 käyttäjä ohjataan antamaan parametrit tekoälyn pelaamiselle. 
-\
- 1.Käyttäjän tulee syötää ohjelmaan hakupuun syvyys, eli kuinka monen liikkeen päähän tekoäly katsoo ennen jokaista tekemäänsä liikettä. Tämä vaikuttaa huomattavasti tekoälyn pelaamisen käyttämään aikaan sekä sen pelikyvyn hyvyyteen.
- &nbsp;&nbsp Syvyydellä 0 tekoäly tarkastelee vain yhden liikkeen päähän. 
 
- &nbsp;&nbsp Syvyydellä 1 tekoäly tarkastelee liikkeen, satunaisen luvun lisäämisen ja yhden liikkeen päähän pelitilanetta.
+   1. Käyttäjän tulee syötää ohjelmaan hakupuun syvyys, eli kuinka monen liikkeen päähän tekoäly katsoo ennen jokaista tekemäänsä liikettä. Tämä vaikuttaa huomattavasti tekoälyn pelaamisen käyttämään aikaan sekä sen pelikyvyn hyvyyteen.
+ 
+      1. Syvyydellä 0 tekoäly tarkastelee vain yhden liikkeen päähän. 
+      2. Syvyydellä 1 tekoäly tarkastelee liikkeen, satunaisen luvun lisäämisen ja yhden liikkeen päähän pelitilanetta.
 
- &nbsp;&nbsp Syvyyden kasvattaminen lisää tarkasteluun aina yhden satunaisen luvun lisäämisen ja yhden liikkeen lisää.
+      Syvyyden kasvattaminen lisää tarkasteluun aina yhden satunaisen luvun lisäämisen ja yhden liikkeen lisää.
 
+   2. Käyttäjä syöttää ohjelmalle myös kuinka monta kertaa tekoäly pelaa pelin annetulla syvyydellä. 
 
- 2. Käyttäjä syöttää ohjelmalle myös kuinka monta kertaa tekoäly pelaa pelin annetulla syvyydellä. 
-\
- 3. Käyttäjän tulee myös syötää kuinka monen liikkeen välein pelilauta tulostetaan jotta tekoälyn pelaamista voidaan seurata. 
-\
- 4. Viimeiseksi käyttäjän tulee syötää missä tilassa tekoälypelaa. 
- 1. Syöttämällä 1 tekoäly pelaa käyttäen expectiminimaxia jossa kaikki satunaiset tapahtumat otetaan huomioon. 
- 2. Syöttämällä 2 tekoäly pelaa käyttäen expectiminimaxia jossa tarkastellaan satunaisen tapahtuman kohdalla vain tilanteet missä ensimäiseen vapaaseen ruutuun ilmestyy 2. 
-\
- Tekoälypelaa peliä kunnes lauta tulee täyteen eikä se voi tehdä enään uusia liikkeitä.
-\
- Kun tekoäly on pelannut käyttäjän määrittämän määrän pelejä, ohjelma näyttää suurimmat luvut mitä laudalla on jokaisen pelin lopussa ollut.
-\
-* Syötämällä kirjaimen q ohjelma sammuu alkuvalikosta. \
+   3. Käyttäjän tulee myös syötää kuinka monen liikkeen välein pelilauta tulostetaan jotta tekoälyn pelaamista voidaan seurata. 
+
+   4. Viimeiseksi käyttäjän tulee syötää missä tilassa tekoäly pelaa. 
+      1. Syöttämällä 1 tekoäly pelaa käyttäen expectiminimaxia jossa kaikki satunaiset tapahtumat otetaan huomioon. 
+      2. Syöttämällä 2 tekoäly pelaa käyttäen expectiminimaxia jossa tarkastellaan satunaisen tapahtuman kohdalla vain tilanteet missä ensimäiseen vapaaseen ruutuun ilmestyy 2. 
+
+   Tekoäly pelaa peliä kunnes lauta tulee täyteen eikä se voi tehdä enään uusia liikkeitä.
+
+   Kun tekoäly on pelannut käyttäjän määrittämän määrän pelejä, ohjelma näyttää suurimmat luvut mitä laudalla on jokaisen pelin lopussa ollut.
+
+* Syötämällä kirjaimen q ohjelma sammuu alkuvalikosta. 
 * Syötämällä kirjaimen q pelataessa tai tekoälyn parametrejä syötettäessä ohjelma palaa alkuvalikkoon.
