@@ -32,6 +32,18 @@ class AI:
         print()
 
     def aiLoop(self, depth, numberOfMoves, mode = None):
+        """Function for the AI loop to play the game and call new moves
+
+        Args:
+            depth: The depth of the search tree for the algorithm
+            numberOfMoves: This number determines after how many moves
+            the game board is printed for user to see
+            mode: This parameter tells the function which expectiminimax
+            form is to be used
+            
+        Returns:
+            The highest num from the board after game is over
+        """
         movesCounter = 0
         while True:
 
@@ -59,7 +71,8 @@ class AI:
 
         Args:
             depth: The depth of the search tree for the algorithm
-
+            mode: This parameter tells the function which expectiminimax
+            form is to be used
         Returns:
             The direction into which move the board
         """
@@ -110,6 +123,8 @@ class AI:
             depth: The depth of the search tree for the algorithm, in other words the recursion depth
             playerTurn: True or False value. True when the recursion node is to make a move made on board
                         False when recursion node is to add a random number on board
+            mode: This parameter tells the function which expectiminimax
+            form is to be used
 
         Returns: 
             The heuristic value of the board after the depth number of moves
@@ -149,7 +164,7 @@ class AI:
                         alpha = tmpAlpha
             if isFull:
                 return -99999999999999999
-        #Muokkaaa lautaa suoraan,älä kutsu setnumtoboard!
+
         else:
             if mode == 1:
                 freeSpaces = self.game.getZeroPositions(board)
