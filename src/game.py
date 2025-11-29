@@ -24,6 +24,7 @@ class Game:
                   [0,0,0,0],
                   [0,0,0,0],
                   [0,0,0,0]]
+
         self.setBoard(board)
         self.addNumToBoard()
 
@@ -40,7 +41,7 @@ class Game:
                    number is to be get  
         
         Returns: 
-            The highest number of a board
+            The highest number of a board (Integer)
         """
 
         highest = 0

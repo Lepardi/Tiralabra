@@ -147,22 +147,54 @@ Testit testaavat myös että kaikilla suunnilla palautetaan False: Mikäli numer
 moveBoard() funktion testit:\
 Testit testaavat että kaikkiin suuntiin ylös, alas, vasen ja oikea, funktio liikuttaa lautaa oikein ennalta määritellyissä tilanteissa ja laudalla on tämän jälkeen halutut luvut oikeissa paikoissa.  
 
+### Heuristic luokan testit
+
+heuristic() funktion testit: \
+1. Funktio palauttaa oikean arvon tyhjälle pelilaudalla \
+2. Funktio palauttaa oikean arvon laudalla jossa on yksi luku. \
+3. Funktio palauttaa oikean arvon laudalla:
+
+```
+[[64,32,16,8],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]]
+```
+
+Palautettavan arvon tulee olla 78517370880. Tämä luku saadaan arvotusmatriisin perusteella: (64*4^15)+(32*4^14)+(16*4^13)+(8*4^12)
+
+Pelin häviävän laudan heuristisia arvoja ei testata koska tämän tilanteen arvon palauttaminen on expectiminimax funktion velvoite. \
 
 ### AI luokan testit
 
 AI luokan testit testaavat yksikkötesteillä että luokan funktiot toimivat oikein. Mukana on myös testejä jotka testaavat että tekoäly saavuuttaa pelissa haluttuja lopputuloksia ennalta asetetuissa pelitilanteissa.
 
-heuristic() funktion testit: \
-1. Funktio palauttaa oikean arvon tyhjälle pelilaudalla \
-2. Funktio palauttaa oikean arvon laudalla jossa on yksi luku. \
-3. Funktio palauttaa oikean arvon laudalla jossa suurin pelinumero 64 on laudan vasemassa yläkulmassa ja tätä seuraavissa ruuduissa vasemalle on luvut 32, 16 ja 8. Tämä testaa sitä että heuristiikka palkitsee oikein siitä että toisiaan seuraavat luvut ovat sijoitettu laudan yläreunaan. \
-
-Pelin häviävän laudan heuristisia arvoja ei testata koska tämän tilanteen arvon palauttaminen on expectiminimax funktion velvoite. \
-
 expectiminimax() funktion testit: \
 1. Funktio palauttaa oikean arvon tyhjälle pelilaudalla \
-2. Funktio palauttaa oikean arvon laudalla jossa on yksi luku. \
-3. Funktio palauttaa oikean arvon täydellen häviön tuottavalle laudalla. \
+2. Funktio palauttaa oikean arvon laudalla jossa on yksi luku syvyydellä 0. Tällöin funktio kutsuu käytänössä vain heuristiikkafunktiota arvioimaan laudan. \
+3. Funktio palauttaa oikean arvon täydelle häviön tuottavalle laudalla. \
+
+Seuraavia testejä varten expectiminimaxille on annettu laudan arvotusta varten erillinen heuristiikkafunktio joka palauttaa aina 100000000000000 tilanteessa jossa laudalla on luku 2048 tai tätä suurempi luku. Oikeassa versiossa tätä ei käytetä koska se vääristää tuloksia kun peliä jatketaan luvun 2048 saamisen jälkeen.
+
+4. Funktio palauttaa oikean arvon 100000000000000 kun laudalla on 2048 syvyydellä 0. \
+5. Funktio palauttaa oikean arvon 100000000000000 syvyydellä 1 kun laudan lähtötilanne on: 
+```
+[[1024,1024,0,0],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]]
+```
+Tällöin yhdellä liikeellä saadaan 2048 ja funktion tulisi nähdä tämä ja palauttaa aina voittoarvo
+
+6. Funktio palauttaa oikean arvon 100000000000000 syvyydellä 3 kun laudan lähtötilanne on: 
+```
+[[1024,512,256,256],
+[16,32,64,16],
+[256,8,0,32],
+[16,512,128,8]]
+```
+Tässä tilanteessa luku 2048 voidaan saada kolmella liikeellä mutta lautaa voidaan siirtää kaikkii suuntiin jokaisen liikkeen jälkeen. Syvyydellä 3 funktion tulee nähdä oikeat siirrot joilla saadaan laudalle 2048 ja palautetaan 100000000000000. 
+
 
 getNextMove() funktion testit: \
 1. Funktio palauttaa oikean suunnan (ylös) laudalla jossa allekkain on luvut 1024. \
@@ -170,6 +202,6 @@ getNextMove() funktion testit: \
 
 aiLoop() funktion testit: \
 1. Funktio palauttaa 1024 tilanteessa jossa se ei voi voittaa peliä ja laudalla on kyseinen luku suurimpana. \
-2. Funktio palauttaa yli 2048 pelitilassa 1, tilanteessa jossa laudalla on 1024,512,256,256 vierekkäin funktion hakusyvyydellä 1. Tämä testaa että tekoäly pelaa vähintäänki järkevästi tilanteessa jossa on triviaalia saada laudalle ainakin 2048. \
+2. Funktio palauttaa vähintään 2048 pelitilassa 1, tilanteessa jossa laudalla on 1024,512,256,256 vierekkäin funktion hakusyvyydellä 1. Tämä testaa että tekoäly pelaa vähintäänki järkevästi tilanteessa jossa on triviaalia saada laudalle ainakin 2048. \
 3. Funktio palauttaa yli 2048 pelitilassa 0, tilanteessa jossa laudalla on 1024,512,256,256 vierekkäin funktion hakusyvyydellä 1. Tämä testaa että tekoäly pelaa vähintäänki järkevästi tilanteessa jossa on triviaalia saada laudalle ainakin 2048.\
 
