@@ -8,7 +8,7 @@ Muokkasin tekoälyn koodia niin että heuristiikka annetaan nyt sille olentona j
 Testit ovat nyt luullakseni sillä tolalla että ne ovat ainakin välttävästi kattavia ja vakuuttavia läpi ohjelman.
 
 2. Projektin edistyminen: \
-Projekti on hyvällä mallilla ja koen että testausdokumentti ainoa puutteelinen asia tällä hetkellä.
+Projekti on hyvällä mallilla ja koen että testausdokumentti ainoa puutteelinen asia tällä hetkellä. Koodia pitäis myös hieman putsata vielä.
 
 3. Mitä opin tällä viikolla: \
 Tällä viikolla käteen ei jäänyt juuri mitään uutta.

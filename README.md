@@ -20,3 +20,4 @@ Helsingin yliopiston Algoritmit ja tekoäly -harjoitustyökurssin projekti.
 ### [Viikko 2](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Viikkoraportit/viikko2.md)
 ### [Viikko 3](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Viikkoraportit/viikko3.md)
 ### [Viikko 4](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Viikkoraportit/viikko4.md)
+### [Viikko 5](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Viikkoraportit/viikko5.md)
