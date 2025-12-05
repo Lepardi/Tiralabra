@@ -357,4 +357,3 @@ class Game:
                     j -= 1
 
         return returnBoard
-

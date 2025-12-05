@@ -44,6 +44,8 @@ class AI:
             move = self.getNextMove(int(depth), (mode))
             self.game.moveBoard(move)
             board = self.game.getBoard()
+
+            # Not cheking the "victory" so that the play continues after 2048
             #if self.game.isGameWon(board):
             #    print("Voitit pelin " + str(movesCounter) + " siirron jälkeen:")
             #    self.printBoardState()
@@ -73,10 +75,6 @@ class AI:
             moveScore = -999999999999999999
             prevBoard = copy.deepcopy(self.game.getBoard())
             if self.game.isMovePossible(move, prevBoard):
-                #self.game.moveBoard(move)
-                #movedBoard = self.game.getBoard()
-                #moveScore = self.expectiminimax(movedBoard, depth, True)
-                #self.game.setBoard(prevBoard)
 
                 if move == "up":
                     movedBoard = copy.deepcopy(self.game.moveBoardUp(prevBoard))
@@ -118,13 +116,11 @@ class AI:
         Returns: 
             The heuristic value of the board after the depth number of moves
         """
-        #self.printBoardState(board)
+
+        # Not cheking the "victory" so that the play continues after 2048
         #if self.game.isGameWon(board):
         #    return 99999999999999999
-        #if self.game.isBoardFull(board):
-        #    return -99999999999999999
         if depth == 0:
-            #print(self.evaluator.heuristic(board))
             return self.evaluator.heuristic(board)
 
         alpha = 0
@@ -162,7 +158,7 @@ class AI:
                     board[position[0]][position[1]] = 2
                     alpha += round(((self.expectiminimax(board, depth, True, mode))*0.9)/len(freeSpaces))
                     board[position[0]][position[1]] = 4
-                    alpha += round((self.expectiminimax(board, depth, True, mode))*0.1)/len(freeSpaces)
+                    alpha += round(((self.expectiminimax(board, depth, True, mode))*0.1)/len(freeSpaces))
             else:
                 freeSpace = self.game.getFirstZeroPosition(board)
                 board[freeSpace[0]][freeSpace[1]] = 2

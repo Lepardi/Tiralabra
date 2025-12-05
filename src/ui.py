@@ -138,32 +138,7 @@ class UI:
             for i in range(int(numberOfGames)):
                 self.game.startGame()
                 results.append(self.ai.aiLoop(depth, numberOfMoves, int(mode)))
-                """
-                movesCounter = 0
-                while True:
-                    movesCounter += 1
-                    move = self.ai.getNextMove(int(depth))
 
-                    if movesCounter % 100 == 0:
-                        print("Siirtoja " + str(movesCounter) + ":")
-                        self.printBoardState()
-                        print()
-
-                    self.game.moveBoard(move)
-                    board = self.game.getBoard()
-                    if self.game.isGameWon(board):
-                        print("Voitit pelin " + str(movesCounter) + " siirron jälkeen:")
-                        self.printBoardState()
-                        results.append(self.game.getHighestNum(board))
-                        break
-                        
-                    if self.game.isBoardFull(board):
-                        print("Häviö " + str(movesCounter) + " siirron jälkeen:")
-                        self.printBoardState()
-                        print()
-                        results.append(self.game.getHighestNum(board))
-                        break
-                """
             print()
             print(results)
             print()
