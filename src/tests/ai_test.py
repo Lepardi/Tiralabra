@@ -120,7 +120,7 @@ class TestAi(unittest.TestCase):
                         [4,2,8,32],
                         [2,4,2,4]]
         self.game.setBoard(test_board)
-        self.assertGreaterEqual(2048, self.ai.aiLoop(1, 500, mode=1))  
+        self.assertLessEqual(2048, self.ai.aiLoop(1, 500, mode=1))  
 
     def test_aiLoop_plays_the_game_as_expected_in_mode_zero(self):
         test_board =  [[1024,512,256,256],
