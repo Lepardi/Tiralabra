@@ -171,15 +171,15 @@ class Game:
             self.setBoard(self.moveBoardUp(self.getBoard()))
             self.addNumToBoard()
 
-        if move == "down" and self.isMovePossible(move, prevBoard):
+        elif move == "down" and self.isMovePossible(move, prevBoard):
             self.setBoard(self.moveBoardDown(self.getBoard()))
             self.addNumToBoard()
 
-        if move == "right" and self.isMovePossible(move, prevBoard):
+        elif move == "right" and self.isMovePossible(move, prevBoard):
             self.setBoard(self.moveBoardRight(self.getBoard()))
             self.addNumToBoard()
 
-        if move == "left" and self.isMovePossible(move, prevBoard):
+        elif move == "left" and self.isMovePossible(move, prevBoard):
             self.setBoard(self.moveBoardLeft(self.getBoard()))
             self.addNumToBoard()
 
@@ -204,19 +204,19 @@ class Game:
                 return False
             else: return True
 
-        if move == "down":
+        elif move == "down":
             movedBoard = self.moveBoardDown(prevBoard)
             if movedBoard == prevBoard:
                 return False
             else: return True
 
-        if move == "right":
+        elif move == "right":
             movedBoard = self.moveBoardRight(prevBoard)
             if movedBoard == prevBoard:
                 return False
             else: return True
 
-        if move == "left":
+        elif move == "left":
             movedBoard = self.moveBoardLeft(prevBoard)
             if movedBoard == prevBoard:
                 return False
@@ -224,7 +224,6 @@ class Game:
 
         return False
             
-
     def moveBoardUp(self, board):
         """Moves a board up by moving and compining the numbers on it upward
 

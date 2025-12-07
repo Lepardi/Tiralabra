@@ -77,22 +77,22 @@ class AI:
             if self.game.isMovePossible(move, prevBoard):
 
                 if move == "up":
-                    movedBoard = copy.deepcopy(self.game.moveBoardUp(prevBoard))
+                    movedBoard = (self.game.moveBoardUp(prevBoard))
                     moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
-                if move == "down":
-                    movedBoard = copy.deepcopy(self.game.moveBoardDown(prevBoard))
+                elif move == "down":
+                    movedBoard = (self.game.moveBoardDown(prevBoard))
                     moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
-                if move == "left":
-                    movedBoard = copy.deepcopy(self.game.moveBoardLeft(prevBoard))
+                elif move == "left":
+                    movedBoard = (self.game.moveBoardLeft(prevBoard))
                     moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
-                if move == "right":
-                    movedBoard = copy.deepcopy(self.game.moveBoardRight(prevBoard))
+                elif move == "right":
+                    movedBoard = (self.game.moveBoardRight(prevBoard))
                     moveScore = self.expectiminimax(movedBoard, depth, False, mode)
                     self.game.setBoard(prevBoard)
 
@@ -134,15 +134,15 @@ class AI:
                         tmpBoard = (self.game.moveBoardUp(board))
                         tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)
 
-                    if move == "down":
+                    elif move == "down":
                         tmpBoard = (self.game.moveBoardDown(board))
                         tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)
 
-                    if move == "left":
+                    elif move == "left":
                         tmpBoard = (self.game.moveBoardLeft(board))
                         tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)    
 
-                    if move == "right":
+                    elif move == "right":
                         tmpBoard = (self.game.moveBoardRight(board))
                         tmpAlpha = self.expectiminimax(tmpBoard, depth-1, False, mode)    
 
@@ -163,7 +163,5 @@ class AI:
                 freeSpace = self.game.getFirstZeroPosition(board)
                 board[freeSpace[0]][freeSpace[1]] = 2
                 alpha += self.expectiminimax(board, depth, True, mode)
-                #board = self.game.setNumToBoard(4, (freeSpace), board)
-                #alpha += self.expectiminimax(board, depth, True, mode)*0.1
 
         return alpha
