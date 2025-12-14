@@ -58,6 +58,15 @@ class TestGame(unittest.TestCase):
         self.assertEqual(True, contains_two_or_four)
         self.assertEqual(15, board_after_start_as_one_list.count(0))
 
+    def test_copyBoard_returns_copied_board(self):
+        test_board =  [[0,0,0,4],
+                       [0,512,0,0],
+                       [0,0,2,0],
+                       [0,0,0,1024]]
+        
+        copied_board = self.game.copyBoard(test_board)
+        self.assertEqual(test_board, copied_board)
+
     def test_getBoard_gets_board(self):
         board = self.game.getBoard()
         test_board =  [[0,0,0,0],

@@ -20,7 +20,7 @@ poetry run coverage report -m
 ## Testauksen kattavuusraportti
 ![Coverage](https://github.com/Lepardi/Tiralabra/blob/main/Dokumentaatio/Images/coverage.PNG)
 
-Testit kattavat muuten kaikki pelin ja tekoälyn koodirivit mutta AI luokassa jää muutama tulosterivi kattamatta. Näillä riveillä ei ole vaikutusta tekoälyn tomintaan vaan ovat käyttäjälle sen toiminnan seuraamista varten.
+Testit kattavat muuten kaikki pelin ja tekoälyn koodirivit mutta AI luokassa jää muutama rivi kattamatta. Testit jättävät kattamatta tilanteen jossa getNextMove() ja expectiminimac() funktiot pitäisivät oikealle liikkuttamista parhaana mahdollisena liikeenä. Mielestäni testien pitäisi myös nämä haarat kattaa mutta coverage työkalun mukaan näin ei olisi. 
 
 ## Testit
 ### Game luokan testit
@@ -34,6 +34,9 @@ Testi testaa myös että funktio lisää satunaiseen paikkaan uuden luvun vertaa
 
 startGame() funktion testit: \
 Testi testaa että funktio alustaa laudan jossa on numeroita oikein, niin että siitä löytyy vain yksi 2 tai 4 jostain kohtaa lautaa.
+
+copyBoard() Funktion testit: \
+Testi testaa että funktio palauttaa kopion sille syötteenä annetusta laudasta.
 
 getHighestNum() funktion testit: \
 Testi testaa että funktio palauttaa suurimman summan laudalta:

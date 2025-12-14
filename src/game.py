@@ -28,6 +28,11 @@ class Game:
         self.setBoard(board)
         self.addNumToBoard()
 
+    def copyBoard(self, board):
+        """Function to create a real copy of a board
+        """
+        return [row[:] for row in board]
+
     def getBoard(self):
         """Get the game objects board  
         """
@@ -106,7 +111,7 @@ class Game:
         Returns:
             A new board with the number in given position
         """
-        modifiedBoard = copy.deepcopy(board)
+        modifiedBoard = self.copyBoard(board)
         modifiedBoard[coordinates[0]][coordinates[1]] = number
         return modifiedBoard
 
@@ -166,7 +171,7 @@ class Game:
         Args:
             move: The direction in which the board is to be moved 
         """
-        prevBoard = copy.deepcopy(self.getBoard())
+        prevBoard = self.copyBoard(self.getBoard())
         if move == "up" and self.isMovePossible(move, prevBoard):
             self.setBoard(self.moveBoardUp(self.getBoard()))
             self.addNumToBoard()
@@ -197,7 +202,8 @@ class Game:
         Returns: 
             True if the move changes the board, False if the move does not
         """
-        prevBoard = copy.deepcopy(board)
+
+        prevBoard = self.copyBoard(board)
         if move == "up":
             movedBoard = self.moveBoardUp(prevBoard)
             if movedBoard == prevBoard:
@@ -233,13 +239,13 @@ class Game:
         Returns:
             A new move board where the numbers have been moved upward
         """
-        returnBoard = copy.deepcopy(board)
-        for i in range(len(returnBoard)):
+        returnBoard = self.copyBoard(board)
+        for i in range(4):
             col = [returnBoard[0][i],returnBoard[1][i],returnBoard[2][i],returnBoard[3][i]]
             prevCombinedIdx = None
 
             j = 1
-            while j < len(col):
+            while j < 4:
                 if col[j] != 0 and col[j] == col[j-1] and prevCombinedIdx != j-1:
                     col[j-1] = col[j]+col[j-1]
                     col[j] = 0
@@ -268,8 +274,8 @@ class Game:
         Returns:
             A new move board where the numbers have been moved downward
         """
-        returnBoard = copy.deepcopy(board)
-        for i in range(len(returnBoard)):
+        returnBoard = self.copyBoard(board)
+        for i in range(4):
             col = [returnBoard[0][i],returnBoard[1][i],returnBoard[2][i],returnBoard[3][i]]
             prevCombinedIdx = None
 
@@ -302,13 +308,13 @@ class Game:
         Returns:
             A new move board where the numbers have been moved leftward            
         """
-        returnBoard = copy.deepcopy(board)
-        for i in range(len(returnBoard)):
+        returnBoard = self.copyBoard(board)
+        for i in range(4):
             row = returnBoard[i]
             prevCombinedIdx = None
 
             j = 1
-            while j < len(row):
+            while j < 4:
                 if row[j] != 0 and row[j] == row[j-1] and prevCombinedIdx != j-1:
                     row[j-1] = row[j]+row[j-1]
                     row[j] = 0
@@ -334,8 +340,8 @@ class Game:
         Returns:
             A new move board where the numbers have been moved rightward
         """
-        returnBoard = copy.deepcopy(board)
-        for i in range(len(returnBoard)):
+        returnBoard = self.copyBoard(board)
+        for i in range(4):
             row = returnBoard[i]
             prevCombinedIdx = None
 

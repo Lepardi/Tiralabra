@@ -106,6 +106,14 @@ class TestAi(unittest.TestCase):
         self.game.setBoard(test_board)
         self.assertEqual("left", self.ai.getNextMove(3, mode=1))
 
+    def test_getNextMove_returns_right_when_that_is_next_best_move(self):
+        test_board =  [[2048,1024,512,256],
+                      [2,2,128,128],
+                      [8,2,8,2],
+                      [2,4,2,4]]
+        self.game.setBoard(test_board)
+        self.assertEqual("right", self.ai.getNextMove(1, mode=1))
+
     def test_aiLoop_loses_the_game_correctly(self):
         test_board =  [[1024,512,2,256],
                         [2,8,16,2],

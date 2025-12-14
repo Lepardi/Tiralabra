@@ -73,7 +73,7 @@ class AI:
                         
         for move in moves:
             moveScore = -999999999999999999
-            prevBoard = copy.deepcopy(self.game.getBoard())
+            prevBoard = self.game.copyBoard(self.game.getBoard())
             if self.game.isMovePossible(move, prevBoard):
 
                 if move == "up":
@@ -159,6 +159,7 @@ class AI:
                     alpha += round(((self.expectiminimax(board, depth, True, mode))*0.9)/len(freeSpaces))
                     board[position[0]][position[1]] = 4
                     alpha += round(((self.expectiminimax(board, depth, True, mode))*0.1)/len(freeSpaces))
+                    board[position[0]][position[1]] = 0
             else:
                 freeSpace = self.game.getFirstZeroPosition(board)
                 board[freeSpace[0]][freeSpace[1]] = 2
